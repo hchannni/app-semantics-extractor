@@ -1,0 +1,52 @@
+You are now acting as a CRITIC, not a generator.
+
+The predicate candidates below were just generated from the full source code and the current screen.
+Your task is ONLY to decide whether each candidate variable should be kept or dropped.
+
+Primary judgment:
+- The question is NOT whether a variable exists in source code or is referenced by code.
+- The question is whether the variable should be an independent app semantic state variable that can be asserted in a behavioral specification.
+- KEEP variables that represent independently meaningful app semantic state: domain model fields, preferences/configuration, user selections or input results, state-machine/mode values, scheduling/navigation/security/business state, or source-named properties whose values affect app behavior or UI logic.
+- DROP variables that are only implementation structure, identity/reference plumbing, widget mechanics, derived rendering helpers, or duplicate access paths to semantic state represented elsewhere.
+- Temporary state is not automatically invalid. Keep temporary user/business inputs when they are propagated as meaningful app actions or results. Drop transient widget/presenter mechanics used only to enter, render, validate, or format such values.
+
+Rules:
+- Judge at the variable level.
+- Do NOT add new predicates.
+- Do NOT add new variables.
+- Do NOT rename predicates or variables.
+- When in semantic doubt, KEEP. Recall is more important than precision in this step.
+- Source occurrence, access count, construction, or local data-flow usage is not by itself a reason to keep a variable.
+
+Drop a variable ONLY when the analysis results clearly show that it is not an independent semantic app state and it falls into one of these cases:
+
+  1. Identifier, resource, or fixed constant:
+     IDs, database keys, resource identifiers, preference key names, MAX/MIN constants, enum backing constants, or other fixed constants.
+     Keep enum/value choices themselves when they represent user-selectable or app-controlled state.
+
+  2. Pure container, wrapper, or duplicate reference:
+     A field that only points to an object already modeled by another predicate and does not add an independent state dimension.
+     Prefer the referenced object's semantic fields or stable semantic summary over the raw object reference.
+     Keep the raw reference only when the identity/selection of that referenced object is itself the app semantic state and cannot be represented more precisely by source-named fields.
+
+  3. Internal control mechanics or derived display/helper state:
+     Fields that exist to implement a control, presenter, adapter, or renderer, such as digit buffers, text formatting helpers, enabled/valid flags, local cursor/input bookkeeping, or values deterministically derived from a smaller semantic state.
+     Keep the higher-level user selection, input result, preference, or domain field that is passed into app logic; drop the internal mechanics that merely compute or display it.
+
+  4. One-time UI bookmark or bookkeeping flag:
+     A flag used only to prevent repeated UI actions, remember that a popup/tutorial/drawer was already shown, or track internal UI bookkeeping.
+     Keep it if the flag changes domain behavior, user-visible availability, scheduling, persistence, or test-relevant branching.
+
+  5. Transient form/computation validity:
+     A validity/enabled/intermediate flag meaningful only during a local form interaction or temporary computation.
+     Keep it if it is stored, propagated across components, or gates persistent behavior, navigation, scheduling, or a user-visible capability.
+
+  6. Implementation plumbing:
+     Reactive subjects, backing collections, event streams, dependency-injection handles, observers/subscriptions, adapters, caches, or internal queues that are mechanisms rather than app state.
+     Keep the semantic value carried by such plumbing if it is exposed as a named source-backed state concept.
+
+--- PREDICATE CANDIDATES ---
+{predicate_candidates_with_ids}
+
+--- ANALYSIS RESULTS ---
+{analysis_payload}

@@ -1,0 +1,11 @@
+{variant234_system_prompt}
+
+**[Chunked Note]**
+Apply the instructions above using only the source code below as code evidence.
+Extract the State_Definitions that would belong in the final answer for the current screen.
+
+Return the extracted variables in row format:
+predicate, variable, type, description.
+
+--- RAW SOURCE CODE ---
+{source_text}

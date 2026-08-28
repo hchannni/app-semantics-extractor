@@ -1,0 +1,15 @@
+**[Current Task]**
+Use the provided inputs below to extract and generate State Predicates for the app.
+If `Existing Predicates` already contain a relevant predicate, output an updated version using the same `name` so it can be merged.
+
+**[Input Sources]**
+- App Screenshot Images: (Images attached here)
+- App Name: {app_name}
+- Existing Predicates: {existing_predicates}
+- Accessibility Tree(Optional): {accessibility_tree}
+- Raw Source Code: (provided in the system context; use it as the primary grounding source.)
+
+
+Begin!
+
+Created Predicates:

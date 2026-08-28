@@ -1,0 +1,15 @@
+**[Current Task]**
+Analyze the provided inputs and generate the State Predicates according to the system instruction and the examples of the predicate.
+If `Existing Predicates` already contain a relevant predicate, output an updated version using the same `name` so it can be merged.
+**Remember again**: The goal of this task is not to describe the screen of the mobile app, but **to express the app's abstract state and internal logic in the form of the `Predicate`**.
+
+**[Input Sources]**
+- App Screenshot Images: (Images attached here)
+- App Name: {app_name}
+- Existing Predicates: {existing_predicates}
+- Accessibility Tree(Optional): {accessibility_tree}
+
+
+Begin!
+
+Created Predicates: 
