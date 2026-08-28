@@ -54,8 +54,3 @@ Gradle environment.
 The evaluated applications are fetched from their upstream repositories and retain their
 respective licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The repository owner
 must choose a top-level license before treating the research code as reusable open source.
-
-## Status
-
-This is a research artifact, not a production Android analysis service. Ground Truth, generated
-predictions, and metric results will be published after the evaluation figures are finalized.
